@@ -56,11 +56,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Fresh Steps",
+  "name": "SnackD",
   "alternateName": "SnackD",
   "url": "https://snackd.store",
   "logo": "https://snackd.store/logo.png",
-  "description": "Fresh Steps is the maker of SnackD — India's tastiest sugar free peanut chikki, sweetened with stevia and made the healthiest way possible.",
+  "description": "SnackD is the maker of SnackD — India's tastiest sugar free peanut chikki, sweetened with stevia and made the healthiest way possible.",
   "sameAs": [
     "https://instagram.com/snackd.store",
     "https://youtube.com/@snackd"
@@ -568,6 +568,12 @@
     width: 38px; height: 38px;
     display: grid; place-items: center;
     color: var(--gold);
+    flex-shrink: 0;
+  }
+  .ing-tab-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   .ing-tab-text { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
   .ing-tab-name {
@@ -793,7 +799,6 @@
   @media (max-width: 720px) {
     .ing-panel { grid-template-columns: 1fr; padding: 24px; gap: 18px; }
     .ing-panel-art svg { max-width: 180px; }
-    .ing-tab { padding: 16px 18px; }
     .ing-purity { flex-direction: column; align-items: flex-start; }
   }
 
@@ -994,6 +999,170 @@
   .botanical.tl { top: 40px; left: 40px; transform: rotate(-15deg); }
   .botanical.br { bottom: 40px; right: 40px; transform: rotate(165deg); }
   @media (max-width: 720px) { .botanical { display: none; } }
+
+  /* ============== Feedback ============== */
+  .feedback {
+    background: var(--forest);
+    color: var(--offwhite);
+    position: relative;
+    overflow: hidden;
+  }
+  .feedback::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 55% at 15% 20%, rgba(200, 134, 10, 0.12), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 85%, rgba(35, 71, 52, 0.5), transparent 55%);
+  }
+  .feedback-wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: clamp(36px, 5vw, 72px);
+    align-items: start;
+  }
+  .feedback-copy .kicker { color: var(--gold); }
+  .feedback-copy h2 {
+    color: var(--offwhite);
+    margin-bottom: 20px;
+  }
+  .feedback-copy h2 em { font-style: italic; color: var(--gold); font-weight: 500; }
+  .feedback-intro {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.65;
+    color: rgba(240, 234, 214, 0.78);
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+  .feedback-promise {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(200, 134, 10, 0.4);
+    background: rgba(200, 134, 10, 0.08);
+    font-family: var(--serif);
+    font-size: clamp(16px, 1.3vw, 19px);
+    font-style: italic;
+    color: var(--offwhite);
+    line-height: 1.4;
+  }
+  .feedback-promise-ic {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--gold);
+    color: var(--forest-deep);
+  }
+  .feedback-card {
+    background: var(--cream-soft);
+    color: var(--forest);
+    border-radius: 28px;
+    padding: clamp(28px, 3vw, 40px);
+    border: 1px solid rgba(27, 58, 45, 0.08);
+    box-shadow: 0 28px 60px -32px rgba(0, 0, 0, 0.45);
+  }
+  .feedback-card h3 {
+    font-size: clamp(22px, 2vw, 28px);
+    margin-bottom: 6px;
+  }
+  .feedback-card-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .feedback-form { display: flex; flex-direction: column; gap: 18px; }
+  .fb-field { display: flex; flex-direction: column; gap: 8px; }
+  .fb-field label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+  .fb-field input,
+  .fb-field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(27, 58, 45, 0.14);
+    background: #fff;
+    color: var(--forest);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.45;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fb-field input::placeholder,
+  .fb-field textarea::placeholder { color: rgba(107, 102, 87, 0.65); }
+  .fb-field input:focus,
+  .fb-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200, 134, 10, 0.18);
+  }
+  .fb-field textarea {
+    min-height: 130px;
+    resize: vertical;
+  }
+  .fb-field-hint {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .fb-field.is-invalid input,
+  .fb-field.is-invalid textarea {
+    border-color: #c44;
+    box-shadow: 0 0 0 3px rgba(204, 68, 68, 0.12);
+  }
+  .fb-field-error {
+    font-size: 12px;
+    color: #b33;
+    min-height: 0;
+    display: none;
+  }
+  .fb-field.is-invalid .fb-field-error { display: block; }
+  .feedback-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .feedback-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  .feedback-status {
+    display: none;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .feedback-status.is-visible { display: block; }
+  .feedback-status.is-success {
+    background: rgba(27, 58, 45, 0.08);
+    border: 1px solid rgba(27, 58, 45, 0.14);
+    color: var(--forest);
+  }
+  .feedback-status.is-error {
+    background: rgba(204, 68, 68, 0.08);
+    border: 1px solid rgba(204, 68, 68, 0.25);
+    color: #922;
+  }
+  @media (max-width: 900px) {
+    .feedback-wrap { grid-template-columns: 1fr; gap: 36px; }
+    .feedback-intro { max-width: none; }
+  }
+  @media (max-width: 720px) {
+    .feedback-card { border-radius: 22px; padding: 24px 20px; }
+    .feedback-promise { font-size: 15px; padding: 12px 14px; }
+  }
 
   /* ============== FAQ ============== */
   .faq { background: var(--cream); color: var(--forest); }
@@ -1215,22 +1384,33 @@
     }
     .ing-tabs::-webkit-scrollbar { display: none; }
     .ing-tab {
+      display: inline-flex;
       flex: 0 0 auto;
+      flex-direction: row;
+      align-items: center;
       scroll-snap-align: start;
-      grid-template-columns: auto auto;
-      grid-template-rows: auto;
-      padding: 10px 14px;
+      padding: 9px 14px 9px 11px;
       gap: 8px;
       border-radius: 999px;
+      min-height: 40px;
     }
     .ing-tab::before { display: none; }
     .ing-tab-num { display: none; }
     .ing-tab-icon {
-      grid-column: 1; grid-row: 1;
-      width: 22px; height: 22px;
+      width: 18px;
+      height: 18px;
+      line-height: 0;
     }
-    .ing-tab-text { grid-column: 2; grid-row: 1; align-self: center; }
-    .ing-tab-name { font-size: 13px; }
+    .ing-tab-text {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+    .ing-tab-name {
+      font-size: 12.5px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
     .ing-tab-desc { display: none; }
     .ing-tab-arrow { display: none; }
 
@@ -1354,6 +1534,7 @@
 <body>
 
 <!-- ============== STICKY MOBILE BUY BAR ============== -->
+<!--
 <div class="mobile-buybar" id="mobileBuybar" aria-hidden="true">
   <a class="mb-btn mb-amazon" href="https://amazon.in" target="_blank" rel="noopener">
     <span class="mb-ic" aria-hidden="true">
@@ -1368,6 +1549,7 @@
     <span>Shop Flipkart</span>
   </a>
 </div>
+-->
 
 <!-- ============== NAV ============== -->
 <nav class="nav" id="nav" aria-label="Primary">
@@ -1378,8 +1560,9 @@
     <a href="#nutrition">Nutrition</a>
     <a href="#products">Shop</a>
     <a href="#faq">FAQ</a>
+    <a href="#feedback">Feedback</a>
   </div>
-  <a href="https://amazon.in" class="nav-cta" target="_blank" rel="noopener">Shop Now →</a>
+  <!-- <a href="https://amazon.in" class="nav-cta" target="_blank" rel="noopener">Shop Now →</a> -->
 </nav>
 
 <main id="top">
@@ -1392,12 +1575,18 @@
       <div>
         <span class="eyebrow">Sugar Free · Stevia Sweetened</span>
         <h1 class="h1" id="hero-title">
-          India's Tastiest Chikki. Made the <span class="italic">Healthiest</span> Way.
+          India's <span class="italic">Tastiest - Healthiest</span> Chikki.
         </h1>
         <p class="hero-sub">
-          <strong>Sugar free peanut chikki, sweetened with stevia.</strong>
-          High protein. High fibre. Zero jaggery. A diabetic friendly, keto-compatible snack your body actually wants.
+          <strong>5 ingredients. Zero sugar. Nothing to hide.</strong></br>
+          Peanut chikki sweetened with stevia - not jaggery, not syrups, not shortcuts.
+          <strong> High protein. High fibre. Diabetic friendly. Keto compatible.</strong>
+        </br> </br>
+          Your "healthy" snack bar has more sugar than a biscuit. While others reformulate and rebrand to seem healthy - we started clean.
+          No 47-ingredient label. No guilt. No compromise.
+          This is what honest food looks like.
         </p>
+        <!--
         <div class="hero-ctas">
           <a class="btn btn-primary magnetic" href="https://amazon.in" target="_blank" rel="noopener" aria-label="Shop SnackD on Amazon">
             Shop on Amazon <span class="arr">→</span>
@@ -1406,12 +1595,13 @@
             Shop on Flipkart <span class="arr">→</span>
           </a>
         </div>
-        <div class="hero-meta">
+        -->
+        <!-- <div class="hero-meta">
           <span class="stars">★★★★★</span>
           <span>Loved by snackers</span>
           <span class="divider" aria-hidden="true"></span>
           <span>FSSAI Certified</span>
-        </div>
+        </div> -->
       </div>
 
       <!-- Stylized Jar Illustration (resembling the actual product label) -->
@@ -2186,6 +2376,7 @@
   </section>
 
   <!-- ============== PRODUCTS ============== -->
+  <!--
   <section class="products" id="products" aria-labelledby="prod-title">
     <div class="section-head">
       <span class="kicker reveal">Shop</span>
@@ -2194,7 +2385,6 @@
     </div>
 
     <div class="prod-grid">
-      <!-- Single Jar -->
       <article class="prod reveal">
         <div class="prod-illo" aria-hidden="true">
           <svg class="jar-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
@@ -2229,7 +2419,6 @@
         </div>
       </article>
 
-      <!-- Pack of 2 -->
       <article class="prod reveal" style="--delay:140ms;">
         <div class="prod-illo" aria-hidden="true">
           <svg class="jar-svg" viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg">
@@ -2237,12 +2426,10 @@
               <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E2A526"/><stop offset="100%" stop-color="#8d5e07"/></linearGradient>
             </defs>
             <ellipse cx="110" cy="238" rx="80" ry="6" fill="#000" opacity="0.18"/>
-            <!-- back jar -->
             <g opacity="0.75" transform="translate(28,12)">
               <rect x="40" y="32" width="96" height="28" rx="4" fill="url(#g2)"/>
               <rect x="33" y="60" width="110" height="170" rx="10" fill="#234734"/>
             </g>
-            <!-- front jar -->
             <g transform="translate(-10,0)">
               <rect x="52" y="32" width="96" height="28" rx="4" fill="url(#g2)"/>
               <rect x="45" y="60" width="110" height="170" rx="10" fill="#234734"/>
@@ -2273,10 +2460,11 @@
       </article>
     </div>
   </section>
+  -->
 
   <!-- ============== FOUNDER ============== -->
+  
   <section class="founder" id="founder" aria-labelledby="founder-title">
-    <!-- Botanical decorative svgs -->
     <svg class="botanical tl" width="160" height="160" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="0.8">
       <path d="M50 90 Q40 70 50 50 Q60 30 50 10"/>
       <path d="M50 78 Q35 75 28 60 M50 78 Q65 75 72 60"/>
@@ -2301,6 +2489,7 @@
       <div class="founder-signature reveal" style="--delay:380ms;">— Let's get SnackD.</div>
     </div>
   </section>
+
 
   <!-- ============== FAQ ============== -->
   <section class="faq" id="faq" aria-labelledby="faq-title">
@@ -2330,19 +2519,68 @@
         <button class="faq-q" aria-expanded="false">Can I use SnackD as a high protein post-workout snack? <span class="plus" aria-hidden="true">+</span></button>
         <div class="faq-a"><div class="faq-a-inner">Absolutely. At 14.5g of plant-based protein per 100g, SnackD works as a high protein snack for gym days, a natural protein bar alternative, or a clean post-workout snack. No protein powders, no syrups, no fillers — just real roasted peanuts and four other ingredients.</div></div>
       </div>
-      <div class="faq-item">
+      <!-- <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Where can I buy SnackD peanut chikki online? <span class="plus" aria-hidden="true">+</span></button>
         <div class="faq-a"><div class="faq-a-inner">SnackD is available online on <b>Amazon, Flipkart, Zepto and Blinkit</b> with PAN-India shipping. Direct-to-doorstep through snackd.store is launching shortly. Search “SnackD peanut chikki” or “sugar free peanut chikki” to find us.</div></div>
-      </div>
+      </div> -->
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Is SnackD FSSAI certified and clean label? <span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — FSSAI License No. 11322005000502. SnackD is a clean label snack: just five ingredients — peanut, prebiotic plant fibre, stevia, cocoa powder, pink salt. No artificial colours, no preservatives, no glucose syrup. Every batch is third-party tested for protein, fibre, and sugar content before it ships.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. SnackD is a clean label snack: just five ingredients — peanut, prebiotic plant fibre, stevia, cocoa powder, pink salt. No artificial colours, no preservatives, no glucose syrup. Every batch is third-party tested for protein, fibre, and sugar content before it ships.</div></div>
       </div>
     </div>
   </section>
 
+  <!-- ============== FEEDBACK ============== -->
+  <section class="feedback" id="feedback" aria-labelledby="feedback-title">
+    <div class="feedback-wrap">
+      <div class="feedback-copy">
+        <span class="kicker reveal">Your Voice Matters</span>
+        <h2 class="reveal" id="feedback-title" style="--delay:80ms;">We Genuinely Appreciate <em>Your Feedback.</em></h2>
+        <p class="feedback-intro reveal" style="--delay:140ms;">
+          Every note helps us make SnackD better — whether it's praise, a suggestion, or something we missed.
+          Share your thoughts, ask us anything, or tell us you'd like to place an order right in your message.
+        </p>
+        <div class="feedback-promise reveal" style="--delay:220ms;">
+          <span class="feedback-promise-ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <span>We read every message and reach out to each person individually. <strong>That's a promise.</strong></span>
+        </div>
+      </div>
+
+      <div class="feedback-card reveal" style="--delay:160ms;">
+        <h3>Talk to Us</h3>
+        <p class="feedback-card-sub">Leave your name and number — we'll get back to you personally.</p>
+
+        <form class="feedback-form" id="feedbackForm" novalidate>
+          <div class="fb-field" id="fbNameField">
+            <label for="fbName">Your name</label>
+            <input type="text" id="fbName" name="name" autocomplete="name" placeholder="How should we address you?" required />
+            <span class="fb-field-error" id="fbNameError">Please enter your name.</span>
+          </div>
+          <div class="fb-field" id="fbPhoneField">
+            <label for="fbPhone">Phone number</label>
+            <input type="tel" id="fbPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number" required />
+            <span class="fb-field-hint">We'll only use this to respond to you.</span>
+            <span class="fb-field-error" id="fbPhoneError">Please enter a valid 10-digit Indian mobile number.</span>
+          </div>
+          <div class="fb-field" id="fbCommentField">
+            <label for="fbComment">Your message</label>
+            <textarea id="fbComment" name="comment" placeholder="Share feedback, ask a question, or let us know you'd like to order…" required></textarea>
+            <span class="fb-field-error" id="fbCommentError">Please share your message — even a line helps.</span>
+          </div>
+          <div class="feedback-status" id="feedbackStatus" role="status" aria-live="polite"></div>
+          <button type="submit" class="btn btn-primary magnetic feedback-submit" id="feedbackSubmit">
+            Send Feedback <span class="arr">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <iframe name="feedbackFrame" id="feedbackFrame" title="Feedback submission" hidden></iframe>
+  </section>
+
   <!-- ============== FINAL CTA ============== -->
-  <section class="cta-banner" aria-labelledby="cta-title">
+  <!-- <section class="cta-banner" aria-labelledby="cta-title">
     <span class="kicker reveal" style="display:inline-block;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;">One Last Thing</span>
     <h2 class="reveal" id="cta-title" style="--delay:80ms;">Stop settling for snacks that <span class="gold">don't love you back.</span></h2>
     <p class="reveal" style="--delay:140ms;">India's tastiest sugar free peanut chikki, made the healthiest way possible. On Amazon, Flipkart, Zepto and Blinkit. Ships today.</p>
@@ -2350,7 +2588,8 @@
       <a class="btn btn-primary magnetic pulse-glow" href="https://amazon.in" target="_blank" rel="noopener">Shop on Amazon <span class="arr">→</span></a>
       <a class="btn btn-outline magnetic" href="https://flipkart.com" target="_blank" rel="noopener">Shop on Flipkart <span class="arr">→</span></a>
     </div>
-  </section>
+
+  </section> -->
 
 </main>
 
@@ -2360,26 +2599,19 @@
     <div class="foot-brand">
       <div class="brand">SnackD<span class="dot">.</span></div>
       <div class="tag">Let's get SnackD — Guilt Free.</div>
-      <p class="blurb">India's tastiest peanut chikki, made the healthiest way possible. Stevia-sweetened, high in protein and prebiotic fibre. A Fresh Steps brand from Kerala. Made in India for people who read the label.</p>
-    </div>
-    <div class="foot-col">
-      <h4>Shop</h4>
-      <ul>
-        <li><a href="https://amazon.in" target="_blank" rel="noopener">Amazon</a></li>
-        <li><a href="https://flipkart.com" target="_blank" rel="noopener">Flipkart</a></li>
-        <li><a href="#products">All Products</a></li>
-      </ul>
+      <p class="blurb">India's tastiest peanut chikki, made the healthiest way possible. Stevia-sweetened, high in protein and prebiotic fibre. A brand from Kerala. Made in India for people who read the label.</p>
     </div>
     <div class="foot-col">
       <h4>Brand</h4>
       <ul>
-        <li><a href="#founder">About</a></li>
+        <!-- <li><a href="#founder">About</a></li>
         <li><a href="/cdn-cgi/l/email-protection#dbb3beb7b7b49ba8b5bab8b0bff5a8afb4a9be">Contact</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#" aria-label="FSSAI License">FSSAI: 11322005000502</a></li>
+        <li><a href="#faq">FAQ</a></li> -->
+        <li><a href="#" aria-label="FSSAI License">FSSAI: 21326199000482</a></li>
+        <li><a href="#" aria-label="FSSAI License">GST: 32BHOPC5009D1ZW</a></li>
       </ul>
     </div>
-    <div class="foot-col">
+    <!-- <div class="foot-col">
       <h4>Follow</h4>
       <div class="socials">
         <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
@@ -2389,10 +2621,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8 26 26 0 0 0 .4-4.8 26 26 0 0 0-.4-4.8zM10 15V9l5 3-5 3z"/></svg>
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Fresh Steps Pvt. Ltd. · All rights reserved.</span>
+    <span>© 2026 SnackD Pvt Ltd. · All rights reserved.</span>
     <span>Made with peanuts, in India 🇮🇳</span>
   </div>
 </footer>
@@ -2692,6 +2924,177 @@
   (function setupChips() {
     document.querySelectorAll('.chip').forEach(c => {
       c.addEventListener('click', () => c.classList.toggle('active'));
+    });
+  })();
+
+  // ============== Feedback form → Google Sheets ==============
+  // Paste your deployed Google Apps Script web app URL below.
+  // Setup: see google-apps-script/feedback.gs in this project.
+  const SNACKD_FEEDBACK_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyEddGKd7GRr-x2ZNn4eWQzBznLMVpGhV_4hxGSd6-kYzqt-UCBt6bszRxB6s5N9q8OZA/exec';
+
+  (function setupFeedbackForm() {
+    const form = document.getElementById('feedbackForm');
+    if (!form) return;
+
+    const nameInput = document.getElementById('fbName');
+    const phoneInput = document.getElementById('fbPhone');
+    const commentInput = document.getElementById('fbComment');
+    const submitBtn = document.getElementById('feedbackSubmit');
+    const statusEl = document.getElementById('feedbackStatus');
+    const iframe = document.getElementById('feedbackFrame');
+
+    const fields = {
+      name: document.getElementById('fbNameField'),
+      phone: document.getElementById('fbPhoneField'),
+      comment: document.getElementById('fbCommentField'),
+    };
+
+    const showStatus = (message, type) => {
+      statusEl.textContent = message;
+      statusEl.className = 'feedback-status is-visible is-' + type;
+    };
+
+    const clearStatus = () => {
+      statusEl.className = 'feedback-status';
+      statusEl.textContent = '';
+    };
+
+    const normalizePhone = (value) => value.replace(/\D/g, '').replace(/^91/, '').slice(-10);
+
+    const validate = () => {
+      let valid = true;
+      Object.values(fields).forEach(f => f.classList.remove('is-invalid'));
+
+      const name = nameInput.value.trim();
+      const phone = normalizePhone(phoneInput.value);
+      const comment = commentInput.value.trim();
+
+      if (!name) {
+        fields.name.classList.add('is-invalid');
+        valid = false;
+      }
+      if (!/^[6-9]\d{9}$/.test(phone)) {
+        fields.phone.classList.add('is-invalid');
+        valid = false;
+      }
+      if (!comment) {
+        fields.comment.classList.add('is-invalid');
+        valid = false;
+      }
+
+      return valid ? { name, phone, comment } : null;
+    };
+
+    [nameInput, phoneInput, commentInput].forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.fb-field').classList.remove('is-invalid');
+        clearStatus();
+      });
+    });
+
+    const parseSheetResponse = (text) => {
+      if (!text) return { ok: false, error: 'Empty response from server.' };
+      if (text.includes('Script function not found')) {
+        return {
+          ok: false,
+          error: 'Apps Script is not deployed correctly. In the script editor: save Code.gs, then Deploy → Manage deployments → Edit → New version → Deploy.',
+        };
+      }
+      try {
+        const json = JSON.parse(text);
+        if (json.success) return { ok: true };
+        return { ok: false, error: json.error || 'Submission failed.' };
+      } catch (_) {
+        if (text.includes('"success":true')) return { ok: true };
+        return { ok: false, error: 'Unexpected server response. Check your Apps Script deployment.' };
+      }
+    };
+
+    const postToSheet = async (data) => {
+      if (!SNACKD_FEEDBACK_ENDPOINT) {
+        throw new Error('Feedback form is not connected yet. Add your Google Apps Script URL to SNACKD_FEEDBACK_ENDPOINT.');
+      }
+
+      const body = new URLSearchParams(data).toString();
+
+      try {
+        const res = await fetch(SNACKD_FEEDBACK_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+          redirect: 'follow',
+        });
+        const text = await res.text();
+        const parsed = parseSheetResponse(text);
+        if (parsed.ok) return;
+        throw new Error(parsed.error);
+      } catch (err) {
+        if (err.message && !err.message.includes('Failed to fetch') && !err.message.includes('NetworkError')) {
+          throw err;
+        }
+      }
+
+      // Fallback when fetch is blocked (e.g. file:// CORS): hidden iframe POST
+      await new Promise((resolve, reject) => {
+        const relay = document.createElement('form');
+        relay.method = 'POST';
+        relay.action = SNACKD_FEEDBACK_ENDPOINT;
+        relay.target = 'feedbackFrame';
+        relay.style.display = 'none';
+
+        Object.entries(data).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          relay.appendChild(input);
+        });
+
+        const onLoad = () => {
+          iframe.removeEventListener('load', onLoad);
+          if (relay.parentNode) document.body.removeChild(relay);
+          try {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            const parsed = parseSheetResponse(doc && doc.body ? doc.body.innerText : '');
+            if (parsed.ok) resolve();
+            else reject(new Error(parsed.error));
+          } catch (_) {
+            reject(new Error('Could not confirm submission. Redeploy Apps Script (New version) and test the /exec URL in your browser.'));
+          }
+        };
+
+        iframe.addEventListener('load', onLoad);
+        document.body.appendChild(relay);
+        relay.submit();
+
+        setTimeout(() => {
+          iframe.removeEventListener('load', onLoad);
+          if (relay.parentNode) document.body.removeChild(relay);
+          reject(new Error('Submission timed out. Check Apps Script deployment and try again.'));
+        }, 8000);
+      });
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearStatus();
+
+      const data = validate();
+      if (!data) return;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending…';
+
+      try {
+        await postToSheet(data);
+        form.reset();
+        showStatus('Thank you! We\'ve received your message and will reach out to you personally — that\'s our promise.', 'success');
+      } catch (err) {
+        showStatus(err.message || 'Something went wrong. Please email us at hello.snackd@gmail.com instead.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Feedback <span class="arr">→</span>';
+      }
     });
   })();
 
